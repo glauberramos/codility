@@ -14,3 +14,20 @@ function solution(A, B) {
 
     return count
 }
+
+//tieRopes
+function solution(K, A) {
+    var count = 0
+    var current = A[0]
+
+    for (i = 1; i < A.length + 1; i++) {
+        if (current >= K) {
+            current = A[i]
+            count++
+        } else {
+            current = current + A[i]
+        }
+    }
+
+    return count
+}
