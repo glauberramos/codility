@@ -86,3 +86,26 @@ function solution(M, A) {
 
     return count
 }
+
+//MinAbsSumOfTwo
+function sortArray(a, b) {
+    return Math.abs(a) - Math.abs(b)
+}
+
+function solution(A) {
+    A = A.sort(sortArray)
+
+    if (A.length === 1) return Math.abs(A[0] + A[0])
+
+    var lessSumOfTwo = Math.abs(A[0] + A[0])
+
+    for (i = 0; i < A.length - 1; i++) {
+        var samePivot = Math.abs(A[i] + A[i])
+        var otherPivot = Math.abs(A[i] + A[i+1])
+
+        if (samePivot < lessSumOfTwo) (lessSumOfTwo = samePivot);
+        if (otherPivot < lessSumOfTwo) (lessSumOfTwo = otherPivot);
+    }
+
+    return lessSumOfTwo
+}
