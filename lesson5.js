@@ -4,24 +4,26 @@ function solution(A, B, K) {
     return Math.ceil((B - A) / K) + more;
 }
 
-
 //PassingCars lesson 5
 function solution(A) {
-    var multiplier = 0;
-    var counter = 0;
-
-    A = A.slice(A.indexOf(0), A.length);
-
-    while (A.length > 0) {
-        var element = A.shift();
-
-        if (element === 0) {
-            multiplier++;
-        } else {
-            counter = counter + multiplier;
+    var numberOfOnes = A.reduce(function(acc, value) {
+        if (value === 1) {
+            return acc + value;
         }
 
-        if (counter > 1000000000) return -1;
+        return acc
+    })
+
+    var counter = 0
+
+    for (i = 0; i < A.length; i++) {
+        if (A[i] === 1) {
+            numberOfOnes--
+        } else {
+            counter = counter + numberOfOnes
+        }
+
+        if (counter > 1000000000) return -1
     }
 
     return counter;

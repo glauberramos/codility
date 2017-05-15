@@ -53,6 +53,29 @@ function solution(A) {
     return minimal + 1
 }
 
+//max Counters
+function solution(N, A) {
+    var newArray = new Array(N).fill(0)
+    var biggest = 0
+
+    for (i = 0; i < A.length; i++) {
+        if (A[i] <= N) {
+            const value = newArray[A[i] - 1] + 1
+            newArray[A[i] - 1] = value
+
+            if (value > biggest) {
+                biggest = value
+            }
+        }
+
+        if (A[i] === (N + 1)) {
+            newArray = newArray.fill(biggest)
+        }
+    }
+
+    return newArray;
+}
+
 //show missing value in permutation
 function sortArray(a, b) {
     return a - b;
