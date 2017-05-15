@@ -7,13 +7,13 @@ function toDecimal(A) {
   return sum
 }
 
-function toBaseNeg2(digit) {
+function toBaseNeg2(number) {
   var array = []
 
-  while (digit !== 0) {
-    var remainder = digit % -2
-    digit = Math.ceil(digit / -2)
-    array.push(Math.abs(remainder))
+  while (number !== 0) {
+    var bit = number % -2
+    number = Math.ceil(number / -2)
+    array.push(Math.abs(bit))
   }
 
   return array
