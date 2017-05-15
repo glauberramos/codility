@@ -21,8 +21,8 @@ function toBaseNeg2(number) {
 
 //return array -X in base -2
 function solution(A, B) {
-  var digit = toDecimal(A)
-  return toBaseNeg2(-digit)
+  var number = toDecimal(A)
+  return toBaseNeg2(-number)
 }
 
 console.log(toDecimal([1,0,0,1,1])     === 9);
