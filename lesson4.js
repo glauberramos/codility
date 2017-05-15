@@ -17,21 +17,40 @@ function solution(A) {
 // FrogRiverOne
 function solution(X, A) {
     var hash = {}
+    var count = 0
 
     for (i = 0; i < A.length; i++) {
-        hash[A[i]] = 1
+        if (hash[A[i]] === undefined) {
+            hash[A[i]] = 1
+            count++
+        }
 
-        if (Object.keys(hash).length === X) return i
+        if (count === X) return i
     }
 
     return -1
 }
 
 //missing positive integer in array
+function sortArray(a, b) {
+    return a - b;
+}
+
 function solution(A) {
-    for (i = 1; i <= A.length + 1; i++) {
-        if (A.indexOf(i) === -1) return i;
+    A = A.sort(sortArray)
+    var minimal = 0
+
+    for (i = 0; i < A.length; i++) {
+        if (A[i] > minimal + 1) {
+            return minimal + 1
+        } else {
+            if (A[i] > 0) {
+                minimal = A[i]
+            }
+        }
     }
+
+    return minimal + 1
 }
 
 //show missing value in permutation
