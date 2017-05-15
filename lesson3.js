@@ -21,26 +21,27 @@ function solution(X, Y, D) {
     return Math.ceil((Y - X) / D);
 }
 
-//find minimal difference of 2 parts of an array
+//tapeEquilibrium - find minimal difference of 2 parts of an array
 function summing(acc, value) {
     return acc + value;
 }
 
 function solution(array) {
-    var sumFirst = array.shift();
-    var sumSecond = array.reduce(summing)
+    var sumFirst = array.shift()
+    var sumSecond = 0
+
+    for (i=0; i < array.length; i++) {
+        sumSecond = sumSecond + array[i]  
+    }
 
     var minimalSum = Math.abs(sumFirst - sumSecond);
 
-    while (array.length > 0) {
+    for (i = 0; i < array.length; i++) {
         var difference = Math.abs(sumFirst - sumSecond);
-        if (difference < minimalSum) {
-            minimalSum = difference;
-        }
+        if (difference < minimalSum) (minimalSum = difference)
 
-        var element = array.shift();
-        sumFirst = sumFirst + element;
-        sumSecond = sumSecond - element;
+        sumFirst = sumFirst + array[i];
+        sumSecond = sumSecond - array[i];
     }
 
     return minimalSum;
