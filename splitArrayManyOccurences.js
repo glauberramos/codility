@@ -26,3 +26,34 @@ function solution(X, A) {
   console.log(solution(5, [5, 5, 2, 3, 5, 1, 6]))
   console.log(solution(4, [4, 4, 2, 3, 5, 1, 6, 4, 1, 3]))
   console.log(solution(3, [3,3,1,3,2,1]))
+
+
+
+//second version
+function solution(X, A) {
+  const totalX = A.filter(function(value) {
+    return value === X ? true : false
+  }).length
+
+  if (A.length < 3) return -1
+
+  let count = 0
+
+  for (i = 0; i < A.length; i++) {
+    let pivotX = A[i] === X ? 1 : 0
+    let leftX = totalX - count - pivotX
+    let leftSideLength = A.length - i - 1
+
+    if (count > 0) {
+      if (count === (leftSideLength - leftX)) {
+        return i
+      }
+    }
+
+    if (A[i] === X) {
+      count++
+    }
+  }
+
+  return -1
+}
