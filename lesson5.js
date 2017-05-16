@@ -46,3 +46,27 @@ function solution(input, P, Q) {
 
     return returnArray;
 }
+
+//MinAvgTwoSlice
+function solution(A) {
+    if (A.length === 2) return 0
+
+    let smallestAverage = (A[0] + A[1]) / 2
+    let smallestIndex = 0
+
+    for (i = 1; i < A.length - 1; i++) {
+        if (((A[i] + A[i+1])/2) < smallestAverage) {
+            smallestAverage = (A[i] + A[i+1]) / 2
+            smallestIndex = i
+        }
+
+        if (i < A.length - 2) {
+            if (((A[i] + A[i+1] + A[i+2])/3) < smallestAverage) {
+                smallestAverage = (A[i] + A[i+1] + A[i+2]) / 3
+                smallestIndex = i
+            }
+        }
+    }
+
+    return smallestIndex
+}
