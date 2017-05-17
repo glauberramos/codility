@@ -38,8 +38,6 @@ console.log(solution(6, 19))
 console.log(solution(10, 10))
 console.log(solution(1, 1))
 
-
-
 //not 100% solution
 function solution (x, y) {
   let kx = 0, ky = 0;
