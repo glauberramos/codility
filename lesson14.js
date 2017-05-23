@@ -51,3 +51,44 @@ function solution(A, B, C) {
 
     return -1
 }
+
+//minMaxDivision
+function solution(maxNumBlocks, M, array) {
+  var lowerSum = Math.max.apply(null, array) //pega o maior elemento do array
+  var upperSum = array.reduce((a, c) => a + c, 0) //soma todo array
+  var result = -1
+
+  while (lowerSum <= upperSum) {
+    var tentativeSum = Math.floor((lowerSum + upperSum) / 2) //binary search, soma maior e menor e divide por dois
+
+    if (tentativeSumIsPossible(array, maxNumBlocks, tentativeSum)) {
+      result = tentativeSum
+      upperSum = tentativeSum - 1
+    } else {
+      lowerSum = tentativeSum + 1
+    }
+  }
+
+  return result
+}
+
+//check if it has a valid block with the tentative
+function tentativeSumIsPossible(array, maxNumBlocks, tentativeSum) {
+  var curBlockSum = 0
+  var numBlocks = 1
+
+  for (let elem of array) {
+    //se ainda cabe aumenta o currentblock
+    if (curBlockSum + elem <= tentativeSum) {
+      curBlockSum += elem
+    //se não cria outro block
+    } else {
+      numBlocks++
+      curBlockSum = elem
+    }
+
+    if (numBlocks > maxNumBlocks) return false
+  }
+
+  return true
+}
