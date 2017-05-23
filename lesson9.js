@@ -47,14 +47,20 @@ function solution(A) {
 
 //maxProfit
 function solution(A) {
-    var max = 0;
-    for (i=0; i<A.length; i++) {
-        for(y=i+1; y<=A.length; y++) {
-            if ((A[y] - A[i]) > max) (max = A[y] - A[i]);
+    let maximumProfit = 0
+    let firstIndex = 0
+
+    for (i = 0; i < A.length - 1; i++) {
+        let biggest = A[i + 1]
+
+        for (j = i + 1; j < A.length; j++) {
+            biggest = A[j] > biggest ? A[j] : biggest
         }
+
+        maximumProfit = (biggest - A[i]) > maximumProfit ? (biggest - A[i]) : maximumProfit
     }
 
-    return max;
+    return maximumProfit
 }
 
 //maxSliceSum
